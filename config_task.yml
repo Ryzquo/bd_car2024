@@ -1,0 +1,119 @@
+# horiz_pos: arm水平, 左+ 右-
+# vert_pos: arm垂直, 上+ 下 -
+# arm_side: 机械手面向方向: 左1 右-1
+# arm_angle: 机械手角度: 大靠近水平电机, 小靠近物料台
+# grab_angle: 抓夹张开角度
+
+reset:
+  # 初始位置(水平, 垂直)
+  arm_init_pos: [-0.12, 0.10]
+  # 放球平台初始角度
+  servo_ball_init_angle: -110
+  # 抓夹默认角度
+  grip_angle: 100
+
+block:
+  # === 抓夹角度
+  # 松开
+  grab_open: 130
+  # 抓取
+  grab_close: 100
+
+  # 放球平台放平角度
+  servo_ball_flattening_angle: -80
+
+  # === arm 位置
+  # 机械手位置
+  arm_side: -1
+  # 机械手旋转角度
+  # -> 抓取
+  arm_grab_angle: 37
+  # -> 放下
+  arm_drop_angle: 42
+  # 初始位置(水平, 垂直)
+  arm_init_pos: [-0.09, 0.027]
+  # 抓取时位置(小平, 垂直)
+  arm_grab_pos: [-0.20, 0.027]
+  # 放下第一个方块到放球平台时位置
+  # arm_drop_first_pos: [-0.125, 0.105]
+  arm_drop_first_pos: [-0.12465, 0.0955]
+  # 放下到任务点时时位置(水平, 垂直)
+  arm_drop_pos: [-0.249, 0]
+
+ball:
+  # === 抓夹角度
+  # 松开
+  grab_open: 130
+  # 抓取
+  grab_close: 93
+  
+  # === arm 位置
+  # 机械手位置
+  arm_side: 1
+  # 初始位置(水平, 垂直)
+  arm_init_pos: [-0.12, 0.08]
+  # -> 小球放下到放球平台
+  # 放下时机械手旋转角度
+  arm_drop_angle: -54
+  # -> 小球放下到地图
+  # 放下时放球平台舵机角度变化
+  servo_ball_drop_angles: [-100, -35, -110]
+
+cylinder:
+  # === 抓夹角度
+  # 松开
+  grab_open: [145, 135, 130]
+  # 抓取
+  grab_close: [115, 105, 88]
+
+  # === arm 位置
+  # 初始位置(水平, 垂直)
+  arm_init_pos: [-0.12, 0]
+  # -> 抓取
+  # 抓取时水平偏移位置
+  # arm_grab_horiz_offset: [0.065, 0.065, 0.065]
+  arm_grab_horiz_offset: [0.057, 0.057, 0.057]
+  # 抓取后垂直偏移位置
+  arm_grab_vert_offset: [0.08, 0.08, 0.14]
+  # -> 放下
+  # 放下时垂直偏移位置
+  arm_drop_vert_offset: [-0.08, -0.028, -0.03]
+
+high_ball:
+  # 抓手初始角度
+  grip_init_angle: 25
+  # 抓手抓取角度
+  grip_grab_angle: 55
+
+  # === arm 位置
+  # 初始位置(水平, 垂直)
+  arm_init_pos: [-0.12, 0.10]
+  # -> 抓取
+  # 抓取时垂直偏移位置
+  arm_grab_vert_offset: 0.12
+
+ocr:
+  # === 抓夹角度
+  grip_angle: 120
+  # === arm 位置
+  # 机械手位置
+  arm_side: -1
+  # ocr初始arm位置(水平, 垂直)
+  arm_init_pos: [-0.12, 0.04]
+
+camp:
+  # === arm 位置
+
+criminal:
+  # === 抓夹角度
+  grip_angle: 100
+  # 打击罪犯时抓夹角度
+  hit_angle: 80
+
+  # === arm 位置
+  # 机械手位置
+  arm_side: -1
+  # 识别罪犯时arm初始化位置
+  arm_init_pos: [-0.12, 0.012]
+  # 打击罪犯时arm位置
+  arm_hit_pos: [-0.12, 0.04]

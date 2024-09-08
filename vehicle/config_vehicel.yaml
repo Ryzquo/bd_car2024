@@ -1,0 +1,20 @@
+pid_dis_x_params:
+  kd: 0.1
+  ki: 0.0
+  kp: 20
+  output_limit: 0.3
+pid_dis_y_params:
+  kd: 0.1
+  ki: 0.0
+  kp: 20
+  output_limit: 0.3
+pid_turn_params:
+  kd: 0.1
+  ki: 0.0
+  kp: 5
+  output_limit: 1.5
+
+rx: 0.305
+ry: 0.28
+# 轮子直径
+wheel_diameter: 0.06

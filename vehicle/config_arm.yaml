@@ -1,0 +1,34 @@
+angle_list:
+- 90
+- 0
+- -95
+arm_servo_id: 4
+grap_servo_port: 1
+horiz_limit_port: 2
+horiz_moto_param:
+  port_id: 5
+  reverse: -1
+horiz_pid_param:
+  Kd: 0.4
+  Ki: 0.0
+  Kp: 20
+  setpoint: 0
+horiz_threshold:
+- -0.23
+- 0.23
+pos_enable: true
+pos_horiz: -0.06555555555555555
+pos_vert: 0.05657092961732029
+side: -1
+vert_limit_port: 3
+vert_moto_param:
+  port_id: 6
+  reverse: 1
+vert_pid_param:
+  Kd: 0.4
+  Ki: 0.0
+  Kp: 20
+  setpoint: 0
+vert_threshold:
+- -0.2
+- 0.2
