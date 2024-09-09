@@ -7,7 +7,7 @@
 
 这次比赛有些遗憾，由于第二轮场地测试不足，小车在比赛中出现了一些意外，未能满分完赛。赛后我们决定开源，但是考虑到我们学校目前积累不足，需要给后续成员留点东西，所以只描述方案并开源部分代码。
 
-[演示视频](123)
+[演示视频](https://www.bilibili.com/video/BV1TJpqeNEdk/)
 
 ------
 
@@ -85,7 +85,7 @@ nohup python3 项目路径/car_start_back_as.py --op start > output.log 2>&1 < /
 ### 提取车道线
 使用`paddleseg`进行训练，选择轻量级模型保证不影响巡航速度。
 
-<img src="https://cdn.nlark.com/yuque/0/2024/png/36100039/1724837872022-7c80f3b2-426e-43e2-b76d-4d086d0907e0.png" alt="车道线提取效果" style="zoom:50%;" />
+<img src="https://gitee.com/ryzquo/img_io/raw/master/bd_car2024/1.png" alt="车道线提取效果" style="zoom:50%;" />
 
 ### 训练巡航模型
 采用官方方案，在训练前将提取车道线。
@@ -96,13 +96,11 @@ nohup python3 项目路径/car_start_back_as.py --op start > output.log 2>&1 < /
 ## 抓取方块&放下方块
 小车执行方块任务时，机械臂从置物平台上抓取和放置方块花费的时间比较长，往往是小车已经到达任务点，但仍在等待机械臂就位。为此对抓夹进行了改进，使其能够一次性抓取两个物料，最终显著提升了执行方块任务时的速度。
 
-<img src="https://cdn.nlark.com/yuque/0/2024/png/36100039/1725365714189-14fcc619-1ecf-45ed-abaf-9f487d1053b4.png" alt="修改后的抓夹(比较潦草)" style="zoom: 25%;" />
+<img src="https://gitee.com/ryzquo/img_io/raw/master/bd_car2024/2.png" alt="修改后的抓夹(比较潦草)" style="zoom: 25%;" />
 
-<center class="half">
-    <img src="https://cdn.nlark.com/yuque/0/2024/jpeg/36100039/1724837872904-c3136f25-ee4e-42c4-bf4b-598c2dee5bdc.jpeg" style="zoom: 100%;" />
-	<img src="https://cdn.nlark.com/yuque/0/2024/png/36100039/1724837874200-e932a9c3-e822-4375-b9e7-1575c7bdd256.png" style="zoom: 67%;" />
-<center >
+<img src="https://gitee.com/ryzquo/img_io/raw/master/bd_car2024/3.png" style="zoom: 100%;" />
 
+<img src="https://gitee.com/ryzquo/img_io/raw/master/bd_car2024/4.png" style="zoom: 67%;" />
 
 
 
@@ -114,7 +112,7 @@ nohup python3 项目路径/car_start_back_as.py --op start > output.log 2>&1 < /
 2. 缩短内侧栏杆的长度并降低其高度，方便机械臂更快的把小球放入平台；
 3. 在内侧栏杆上系上扎带，为放下小球提供缓冲(可以确保小球稳定地落入物资发放区)；
 
-<img src="https://cdn.nlark.com/yuque/0/2024/png/36100039/1725366059902-cbb2fa2b-8e42-48b2-a65b-a7954d0b6391.png" alt="修改后的置物平台" style="zoom:33%;" />
+<img src="https://gitee.com/ryzquo/img_io/raw/master/bd_car2024/5.png" alt="修改后的置物平台" style="zoom:33%;" />
 
 ## 通信抢修&神秘任务&高空排险
 两个基础任务只要确保定位准确就不会有问题，这两个任务的模型都有至少两个可供红外检测的柱子，于是，我们将定位分为两个阶段，第一阶段保持高速到达任务起始点，第二阶段使用低速保证小车与任务模型之间的相对位置保持固定，这样既能保证任务完成的速度，又能确保操作的稳定性。
@@ -126,11 +124,11 @@ nohup python3 项目路径/car_start_back_as.py --op start > output.log 2>&1 < /
 
 和抓取方块同样的处理方式也可以在该任务中使用，可以通过堆叠的方式收集2号蓝色圆柱和3号小型红色圆柱后再回到红色平板区域摆放，具体实现中加入了寻找对应圆柱时记录其他未操作圆柱位置的操作，以节省重复寻找的时间。
 
-<img src="https://cdn.nlark.com/yuque/0/2024/jpeg/36100039/1724837874459-1a808fc6-9f50-418d-8629-a001ca44b58d.jpeg" alt="收集两个圆柱后返回"  />
+<img src="https://gitee.com/ryzquo/img_io/raw/master/bd_car2024/6.png" alt="收集两个圆柱后返回"  />
 
 另外缩进了旋转信号塔舵机与红外传感器，防止蹭到放置圆柱的任务模型；
 
-<img src="https://cdn.nlark.com/yuque/0/2024/png/36100039/1725372678254-e922e472-53ae-4ec8-b07f-87334f6bc773.png" alt="缩进后的样子" style="zoom: 25%;" />
+<img src="https://gitee.com/ryzquo/img_io/raw/master/bd_car2024/7.png" alt="缩进后的样子" style="zoom: 25%;" />
 
 ## 应急避险
 在进入营地前对营地进行了定位，保证小车与营地间的相对位置保持固定，小车就可以稳定的停进红色区域；文本识别方面，我们在检测到文本区域后将其拼接成一行，再进行一次文本识别就可以获得完整的任务文本；在文本任务执行方面，我们根据文本内容，将其分为主要动作与次要动作，次要动作可以在主要动作执行时异步执行，可以节省一点时间；
